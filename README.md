@@ -10,7 +10,7 @@ This action runs `amass` to scan a URL with the given parameters. Recommended us
 - name: Scan with amass
   uses: thereisnotime/action-amass@master
   with:
-    url: "https://blackfox-security.com/"
+    parameters: "enum -d blackfox-security.com"
 ```
 
 ### Weekly scheduled scans
