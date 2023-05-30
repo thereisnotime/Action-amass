@@ -1,0 +1,29 @@
+# action.yml
+name: "thereisnotime/action-amass"
+description: "Run Amass in your GitHub Actions workflow"
+
+inputs:
+  parameters:
+    description: "Additional parameters to pass to Amass. There is no default, so you must specify this if you want to pass any arguments."
+    required: true
+    default: ""
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  entrypoint: /bin/sh
+  args:
+    - -c
+    - |
+      args=""
+      additional_args="${{ inputs.parameters }}"
+      set -- $additional_args
+      for arg do
+        args="$args $arg"
+      done
+      echo $args
+      exec /bin/amass $args
+
+branding:
+  icon: "eye"
+  color: "red"
