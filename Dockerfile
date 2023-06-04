@@ -1,0 +1,1 @@
+FROM caffix/amass:latest
